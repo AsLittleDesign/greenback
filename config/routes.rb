@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # Login page
-  get 'login', to: 'login', as: 'login'
+  get 'login', controller: 'login', as: 'login'
 
   # Signup page
-  get 'signup', to: 'signup', as: 'signup'
+  get 'signup', controller: 'signup', as: 'signup'
 
   resources :user
 
