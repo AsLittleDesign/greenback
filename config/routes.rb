@@ -3,24 +3,19 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  # Login page
+  # Login and signup pages
   get 'login', controller: 'login', as: 'login'
-
-  # Signup page
   get 'signup', controller: 'signup', as: 'signup'
 
-  resources :user
+  resources :users
 
-  resource :user do
-    # Route GET /user/admin_login
-    get 'create', :on => :collection
-  end
+  # resource :user do
+  #   # Route GET /user/admin_login
+  #   get 'create', :on => :collection
+  # end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

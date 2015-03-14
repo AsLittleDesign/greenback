@@ -50,3 +50,7 @@ group :development, :test do
   gem 'better_errors'
 end
 
+group :production do
+  # Production webserver
+  gem 'puma'
+end
