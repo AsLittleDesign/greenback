@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  get 'sessions/new'
 
   get 'home/index'
 
@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # Login and signup pages
-  get 'login', controller: 'login', as: 'login'
-  get 'signup', controller: 'signup', as: 'signup'
-
+  get 'signup' => 'users#new'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
   resources :users
 
   # resource :user do

@@ -1,6 +1,5 @@
-%h1
-=form_for(@user) do |f|
-  =render "shared/form_error_messages"
+%h1 Sign up
+=form_for(User.new) do |f|
 
   =f.label :first_name
   =f.text_field :first_name
