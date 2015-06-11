@@ -1,0 +1,80 @@
+.data-group
+  .container
+    -if @bills.length != 0
+      %button.primary(js-show-modal rel="bills") + Add a Bill
+    %table.data-group--table
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Category
+          %th
+            Amount
+          %th
+            Reoccurs
+          %th
+            Cycle starts
+          %th
+            Description
+
+      %tbody
+        =@bills.find_each do |bill|
+          %tr
+            %td
+              .data-group--inner-cell
+                =bill.name
+            %td
+              .data-group--inner-cell
+                =bill.category
+            %td
+              .data-group--inner-cell
+                =bill.amount
+            %td
+              .data-group--inner-cell
+                =bill.duration
+            %td
+              .data-group--inner-cell(js-parse-date)
+                =bill.cycle_start
+            %td
+              .data-group--inner-cell
+                =bill.description
+
+    -if @bills.length == 0
+      .col-md-6
+        %h2
+          You don't have any bills yet.
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        %button.primary(js-show-modal rel="bills") + Add a Bill
+
+#bills.modal(js-modal)
+  .modal--container
+    .modal--overlay(js-hide-modal)
+    .modal--content
+      .modal--close(js-hide-modal) x
+      =form_for(:bill) do |f|
+        %h1 New Bill
+        .modal--input-group
+          =f.label :name, class: "required"
+          =f.text_field :name, :"title" => "Enter a name for this bill.", :"js-autofocus" => true
+
+        .modal--input-group
+          =f.label :category
+          =f.text_field :category, :"title" => "Choose this bill's category."
+
+        .modal--input-group
+          =f.label :amount, class: "required"
+          =f.text_field :amount, :"title" => "Enter the bill amount."
+
+        .modal--input-group
+          =f.label :duration
+          =f.text_field :duration, :"title" => "How often does this bill reoccur?"
+        .modal--input-group
+          =f.label :cycle_start
+          =f.date_field :cycle_start, :"title" => "When does this bill start?"
+
+        .modal--input-group
+          =f.label :description
+          =f.text_area :description, :"title" => "Describe this bill."
+
+        =f.submit "Add Budget ->", class: "primary"

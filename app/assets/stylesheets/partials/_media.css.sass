@@ -1,0 +1,30 @@
+@import modules/_drawer_nav.css.sass
+
+@media (max-width: 1200px)
+  .input-helper
+    left: 0
+    right: 0
+    margin: auto
+    top: 47px
+    width: 275px
+    padding-left: 30px
+
+    &[s-visible]
+      text-align: center
+      padding-left: 0
+      left: 0
+
+  input[type="text"],
+  input[type="password"],
+  input[type="search"],
+  input[type="email"],
+  input[type="search"],
+  input[type="date"],
+  textarea
+    position: relative
+    z-index: 2
+
+@media (max-width: 768px)
+  .navigation-bar--container
+    text-align: left
+    margin-left: 35px

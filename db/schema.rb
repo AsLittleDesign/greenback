@@ -11,7 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313061604) do
+ActiveRecord::Schema.define(version: 20150602042514) do
+
+  create_table "bills", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "owner_id"
+    t.string   "category"
+    t.integer  "amount"
+    t.string   "duration"
+    t.string   "cycle_start"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.string   "budget_category"
+    t.string   "duration"
+    t.string   "cycle_start"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "amount"
+    t.string   "description"
+    t.string   "name"
+  end
+
+  create_table "debts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "owner_id"
+    t.integer  "amount"
+    t.integer  "interest"
+    t.integer  "minimum_payment"
+    t.string   "duration"
+    t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "debt_category"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

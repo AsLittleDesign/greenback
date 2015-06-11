@@ -1,0 +1,89 @@
+.data-group
+  .container
+    -if @budgets.length != 0
+      %button.primary(js-show-modal rel="budgets") + Add a Budget
+    %table.data-group--table
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Category
+          %th
+            Amount
+          %th
+            Reoccurs
+          %th
+            Cycle starts
+          %th
+            Description
+
+      %tbody
+        =@budgets.find_each do |budget|
+          =form_for budget do |f|
+            %tr
+              %td
+                .data-group--inner-cell
+                  %span=budget.name
+                  =f.text_field :name
+              %td
+                .data-group--inner-cell
+                  %span=budget.budget_category
+                  =f.text_field :budget_category
+              %td
+                .data-group--inner-cell
+                  %span=budget.amount
+                  =f.text_field :amount
+              %td
+                .data-group--inner-cell
+                  %span=budget.duration
+                  =f.text_field :duration
+              %td
+                .data-group--inner-cell(js-parse-date)
+                  %span=budget.cycle_start
+                  =f.date_field :cycle_start
+              %td
+                .data-group--inner-cell
+                  %span=budget.description
+                  =f.text_field :description
+              =f.submit
+
+    -if @budgets.length == 0
+      .col-md-6
+        %h2 You don't have any budgets yet.
+        %p Budgets allow you to set how much money you would like to spend on certain things over each time period. E.g. Starting on the 5th, I would like to spend under $250 every month month on food.
+        %button.primary(js-show-modal rel="budgets") + Add a Budget
+
+#budgets.modal(js-modal)
+  .modal--container
+    .modal--overlay(js-hide-modal)
+    .modal--content
+      .modal--close(js-hide-modal) x
+      =form_for(Budget.new) do |f|
+        %h1 New Budget
+        
+        .modal--input-group
+          =f.label :name, class: "required"
+          =f.text_field :name, :"js-autofocus" => true, :"title" => "Choose this bill's category."
+        
+        .modal--input-group
+          =f.label :budget_category
+          =f.text_field :budget_category, :"title" => "Choose this bill's category."
+        
+        .modal--input-group
+          =f.label :amount, class: "required"
+          =f.text_field :amount, :"title" => "Choose this bill's category."
+        
+        .modal--input-group
+          =f.label :duration
+          =f.text_field :duration, :"title" => "Choose this bill's category."
+        
+        .modal--input-group
+          =f.label :cycle_start
+          =f.date_field :cycle_start, :"title" => "Choose this bill's category."
+        
+        .modal--input-group
+          =f.label :description
+          =f.text_area :description, :"title" => "Choose this bill's category."
+
+        =f.submit "Add Budget ->", class: "primary"

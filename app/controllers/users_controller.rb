@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  
-  def show
-  	@user = User.find(params[:id])
+  def dashboard
+  	@user = User.find(current_user.id)
   end
 
   def new
@@ -13,16 +12,16 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
     	flash[:success] = "Welcome to the Greenback!"
-      redirect_to @user
+      redirect_to 'dashboard'
     else
-      render 'show'
+      render 'dashboard'
     end
   end
 
   private
 
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email,
-      	                           :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email,
+    	                           :password, :password_confirmation)
+  end
 end

@@ -1,0 +1,42 @@
+.drawer-nav--overlay(js-close-drawer js-overlay-drawer)
+.drawer-nav(js-drawer)
+  .drawer-nav--close(js-close-drawer) x
+  =link_to root_path, :"js-logo" => true do
+    =image_tag "greenback-mark-white.svg", class: "drawer-nav--logo"
+  -if logged_in?
+    %p.drawer-nav--welcome
+      Welcome, #{current_user.first_name}
+    .drawer-nav--links
+      =link_to root_path do
+        %li.drawer-nav--user-links Home
+
+      =link_to dashboard_path do
+        %li.drawer-nav--user-links Dashboard
+
+      =link_to budgets_path do
+        %li.drawer-nav--user-links
+          Budgets
+          .drawer-nav--link-count
+            =@budgets.length
+
+      =link_to bills_path do
+        %li.drawer-nav--user-links
+          Bills
+          .drawer-nav--link-count
+            =@bills.length
+
+      =link_to debts_path do
+        %li.drawer-nav--user-links
+          Debts
+          .drawer-nav--link-count
+            =@debts.length
+
+    =link_to logout_path, method: :delete do
+      %li.drawer-nav--user-links(m-logout) Logout
+
+  -else
+    =link_to signup_path, class: "navigation-bar--button" do
+      %button.primary Sign Up
+
+    =link_to login_path, class: "navigation-bar--button" do
+      %button.secondary Log In

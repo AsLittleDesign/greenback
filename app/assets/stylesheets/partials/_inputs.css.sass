@@ -1,0 +1,76 @@
+button,
+input[type="submit"]
+  @extend %bold-title
+  padding: 0.7em 1em
+  color: white
+  cursor: pointer
+  display: inline-block
+  border: 1px solid transparent
+  border-radius: 4px
+  box-sizing: border-box
+
+  &.primary
+    background: linear-gradient($light-green, $green)
+
+    &:hover
+      background: linear-gradient(lighten($light-green, 2%), lighten($green, 2%))
+      border-color: darken($green, 1%)
+
+  &.secondary
+    background-color: $shale
+    border-color: $shale
+
+    &:hover
+      background-color: $light-shale
+      border-color: darken($shale, 1%)
+
+  &.wide
+    max-width: 100%
+    min-width: 100%
+
+input[type="submit"]
+  margin-top: 2em
+
+label
+  display: block
+  margin-top: 2em
+  margin-bottom: 0.3em
+  text-align: left
+  font-weight: bold
+
+  &+ input[type="checkbox"]
+    display: inline-block
+  
+  &.required:after
+    display: inline
+    visibility: visible
+    content: "*"
+    color: red
+
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="search"],
+input[type="date"],
+textarea
+  border: 1px solid #E5E9E9
+  border-radius: 3px
+  display: inline-block
+  min-width: 250px
+  padding: 1em
+  font-size: 14px
+  +transition
+  
+  &:focus
+    border-color: black
+    outline: none
+
+  &.wide
+    width: 100%
+
+textarea
+  min-height: 3em
+
+input[type="date"]
+  font-family: "Raleway", Helvetica, sans-serif

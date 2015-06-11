@@ -1,0 +1,71 @@
+.data-group
+  padding-top: 1em
+
+  .col-md-6
+    padding: 0
+
+  &--table
+    border-spacing: 0
+    margin-top: 1em
+    width: 100%
+    
+  tbody > tr:nth-child(2n + 1)
+    background-color: $light-gray
+
+    td
+      border-right: 1px solid $light-gray-2
+
+      &:last-child
+        border-right: 0
+
+  th
+    @extend %bold-title
+    color: #bebebe
+
+  th, td
+    text-align: left
+    min-width: 100px
+    position: relative
+
+    &:hover
+      .data-group--edit
+        opacity: 1
+
+  &--inner-cell
+    max-width: 180px
+    word-wrap: break-word
+    display: inline-block
+    padding: 1em
+
+    > [s-hidden]
+      display: none
+
+  &--edit
+    +transition
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 1em
+    margin: auto
+    font-size: 0.8em
+    height: 1.3em
+    opacity: 0
+    color: #a1a1a1
+
+    &:hover
+      color: $green
+      cursor: pointer
+
+    &[s-hidden]
+      display: none
+
+  input
+    +transition
+    opacity: 0
+    display: none
+    width: calc(100% - 2em)
+    min-width: 0
+
+    &[s-visible]
+      opacity: 1
+      display: block

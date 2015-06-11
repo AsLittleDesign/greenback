@@ -1,0 +1,147 @@
+@media (max-width: 1200px)
+  .navigation-bar
+    &--container
+      text-align: center
+
+    &--links,
+    &--dropdown-toggle
+      display: none
+
+    &--logo
+      float: none
+      display: inline-block
+      height: 50px
+      margin-top: 0px
+
+      &[s-screen-full]
+        display: none
+        height: 40px
+        margin-top: 5px
+
+    &--drawer-toggle
+      +transition
+      width: 30px
+      height: 20px
+      position: absolute
+      top: 15px
+      left: 15px
+      cursor: pointer
+      z-index: 5
+
+      &:hover
+        > .navigation-bar--drawer-toggle-line
+          background-color: lighten($shale, 10%)
+
+    &--drawer-toggle-line
+      position: absolute
+      height: 4px
+      display: block
+      background-color: $shale
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+
+      &:first-child
+        top: 0
+        margin: 0
+
+      &:last-child
+        top: initial
+        bottom: 0
+        margin: 0
+
+  .drawer-nav
+    +transition(0.4s)
+    z-index: 5
+    width: 300px
+    background-color: $shale
+    display: block
+    position: fixed
+    left: -300px
+    top: 0
+    bottom: 0
+    box-shadow: none
+    overflow: hidden
+
+    &[s-active]
+      transform: translateX(300px)
+      box-shadow: 0 0 10px rgba(0,0,0,0.8)
+
+    &--overlay
+      +transition(opacity 0.5s)
+      position: fixed
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      background-color: black
+      opacity: 0
+      z-index: 5
+      pointer-events: none
+
+      &[s-visible]
+        pointer-events: initial
+        opacity: 0.9
+
+    &--close
+      position: absolute
+      top: 0.8em
+      right: 0.5em
+      margin: 0
+      font-size: 2em
+      line-height: 0
+      cursor: pointer
+      color: white
+      opacity: 0.5
+
+    &--logo
+      position: absolute
+      top: 1em
+      left: 0
+      right: 0
+      margin: auto
+      height: 60px
+      color: white
+
+    &--links
+      margin-top: 115px
+
+    &--user-links
+      +transition
+      font-weight: bold
+      letter-spacing: 1px
+      text-transform: uppercase
+      font-size: 0.75em
+      list-style: none
+      color: white
+      line-height: 2.5em
+      padding: 0.75em 2em
+      background-color: $light-shale
+      margin-top: 1px
+
+      &:hover
+        background-color: lighten($light-shale, 3%)
+
+      &[m-logout]
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        text-align: center
+
+    &--link-count
+      display: inline-block
+      float: right
+
+    &--welcome
+      position: absolute
+      right: 0
+      left: 0
+      top: 80px
+      text-align: center
+      margin: auto
+      font-weight: bold
+      color: white
+      font-size: 0.9em

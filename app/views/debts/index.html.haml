@@ -1,0 +1,86 @@
+.data-group
+  .container
+    -if @debts.length != 0
+      %button.primary(js-show-modal rel="debts") + Add a Debt
+    %table.data-group--table
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Category
+          %th
+            Amount
+          %th
+            Reoccurs
+          %th
+            Cycle starts
+          %th
+            Description
+
+      %tbody
+        =@debts.find_each do |debt|
+          %tr
+            %td
+              .data-group--inner-cell
+                =debt.name
+            %td
+              .data-group--inner-cell
+                =debt.debt_category
+            %td
+              .data-group--inner-cell
+                =debt.amount
+            %td
+              .data-group--inner-cell
+                =debt.interest
+            %td
+              .data-group--inner-cell(js-parse-date)
+                =debt.minimum_payment
+            %td
+              .data-group--inner-cell
+                =debt.duration
+            %td
+              .data-group--inner-cell
+                =debt.description
+
+    -if @debts.length == 0
+      .col-md-6
+        %h2 You haven't added any debts yet.
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        %button.primary(js-show-modal rel="debts") + Add a Debt
+
+#debts.modal(js-modal)
+  .modal--container
+    .modal--overlay(js-hide-modal)
+    .modal--content
+      .modal--close(js-hide-modal) x
+      =form_for(:debt) do |f|
+        %h1 New Debt
+        .modal--input-group
+          =f.label :name, class: "required"
+          =f.text_field :name, :"title" => "Enter a name for this debt.", :"js-autofocus" => true
+
+        .modal--input-group
+          =f.label :debt_category
+          =f.text_field :debt_category, :"title" => "Choose this debt's category."
+
+        .modal--input-group
+          =f.label :amount, class: "required"
+          =f.text_field :amount, :"title" => "Enter the amount you owe."
+
+        .modal--input-group
+          =f.label :interest, class: "required"
+          =f.text_field :interest, :"title" => "Enter your interest rate."
+
+        .modal--input-group
+          =f.label :duration
+          =f.text_field :duration, :"title" => "How often do you make payments?"
+        .modal--input-group
+          =f.label :cycle_start
+          =f.date_field :cycle_start, :"title" => "When does this bill start?"
+
+        .modal--input-group
+          =f.label :description
+          =f.text_area :description, :"title" => "Describe this debt."
+
+        =f.submit "Add Debt ->", class: "primary"

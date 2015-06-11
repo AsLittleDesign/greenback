@@ -1,29 +1,59 @@
 source 'https://rubygems.org'
 
+# Use Foreman to start the environment
+gem 'foreman'
+
+# Use Puma as our web server
+gem 'puma'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
 # Use bcrypt for password hashing
 gem 'bcrypt'
-# Use SCSS for stylesheets
+
+# Use Sass for stylesheets
 gem 'sass-rails', '~> 5.0'
+
+# Fix imported mixins
+gem 'sprockets-sass'
+
+# Compass
+gem 'compass-rails'
+
+# Use Susy with compass-rails
+gem 'susy'
+
 # Use HAML for markdown
 gem 'haml-rails'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+
+# Use Underscore
+gem 'underscore-rails'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+# Fixes jQuery turbolinks
+gem 'jquery-turbolinks'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -48,9 +78,13 @@ group :development, :test do
   
   # Better error messages
   gem 'better_errors'
+
+  # Use Pry for debugging
+  gem 'pry'
+
+  # Use FontCustom for compiling SVG assets into a custom icon font
+  gem 'fontcustom'
 end
 
 group :production do
-  # Production webserver
-  gem 'puma'
 end
