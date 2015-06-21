@@ -36,6 +36,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 
+# Use Backbone.js as a lightweight front-end MVC framework
+gem 'rails-backbone'
+
 # Use Underscore
 gem 'underscore-rails'
 
