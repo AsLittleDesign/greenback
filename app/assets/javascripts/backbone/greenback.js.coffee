@@ -9,3 +9,16 @@ window.Greenback =
   Collections: {}
   Routers: {}
   Views: {}
+  init: ->
+  	new Greenback.Routers.Base()
+  	Backbone.history.start({pushState:true})
+
+$ ->
+  Greenback.init()
+
+  $(document).on "click", "a:not([data-bypass])", (e) ->
+    href = $(this).attr "href"
+    protocol = @protocol + "//"
+    if href and href.slice(0, protocol.length) != protocol and href.indexOf("javascript:") != 0
+      e.preventDefault();
+      Backbone.history.navigate(href, true)

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  # after_action :user_records
   def create
   	user = User.find_by(email: params[:session][:email].downcase)
   	if user and user.authenticate(params[:session][:password])

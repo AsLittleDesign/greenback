@@ -2,23 +2,28 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   # Route to the site index
-  root 'content#index'
+  root 'base#application'
 
   # Login and signup pages
   get 'signup' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  resources :users
 
   # Dashboard
   get 'dashboard' => 'users#dashboard'
 
-  # Budgets page
-  get 'budgets' => 'budgets#index'
+  # Budgets
+  get 'budgets' => 'base#application'
   post 'budgets' => 'budgets#create'
-  post 'budgets' => 'budgets#update'
-  resources :budgets
+
+  get 'budgets/:id' => 'base#application'
+  post 'budgets/:id' => 'budgets#update'
+
+  scope "api" do
+    resources :budgets, defaults: { format: "json" }
+    resources :users, defaults: { format: "json" }
+  end
 
   # Bills page
   get 'bills' => 'bills#index'

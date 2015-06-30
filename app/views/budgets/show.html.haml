@@ -1,0 +1,73 @@
+.container
+  =form_for @budget do |f|
+    %div
+      %label Name
+      =@budget.name
+      =f.text_field :name, :value => @budget.name
+
+    %div
+      %label Category
+      =@budget.budget_category
+      =f.text_field :budget_category, :value => @budget.budget_category
+
+    %div
+      %label Amount
+      =@budget.amount
+      =f.text_field :amount, :value => @budget.amount
+
+    %div
+      %label Reoccurs
+      =@budget.duration
+      =f.text_field :duration, :value => @budget.duration
+
+    %div(js-parse-date)
+      %label Cycle Starts
+      =@budget.cycle_start
+      =f.date_field :cycle_start, :value => @budget.cycle_start
+
+    %div
+      %label Description
+      =@budget.description
+      =f.text_field :description, :value => @budget.description
+
+    =f.submit
+
+.data-group
+  .container
+    %table.data-group--table
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Category
+          %th
+            Amount
+          %th
+            Reoccurs
+          %th
+            Changed
+          %th
+            Description
+      %tbody
+        -@budget.versions.reverse.each do |version|
+          -version_data = version.reify
+          %tr
+            %td
+              .data-group--inner-cell
+                =version_data.name
+            %td
+              .data-group--inner-cell
+                =version_data.budget_category
+            %td
+              .data-group--inner-cell
+                =version_data.amount
+            %td
+              .data-group--inner-cell
+                =version_data.updated_at
+            %td
+              .data-group--inner-cell(js-parse-date)
+                =version_data.cycle_start
+            %td
+              .data-group--inner-cell
+                =version_data.description

@@ -1,0 +1,40 @@
+#logo-modal.modal(js-modal)
+  .modal--container
+    .modal--overlay(js-hide-modal)
+    .modal--content
+      .modal--close(js-hide-modal) x
+      %h1.centered Looking for this?
+      Download high quality logo assets to use wherever you need.
+
+      .logo-download-grid
+        .logo-download-grid--item
+          %h2 SVG
+          %strong Scalable Vector Graphics
+          %p An image format for two-dimensional graphics with support for interactivity and animation.
+          %button.primary Download as .SVG
+
+        .logo-download-grid--item
+          %h2 AI
+          %strong Adobe Illustrator Artwork
+          %p A file format for representing single-page, vector-based drawings in either the EPS or PDF formats.
+          %button.primary Download as .AI
+
+        .logo-download-grid--item
+          %h2 PNG
+          %strong Portable Network Graphics
+          %p A raster graphics file format that supports lossless data compression and transparency.
+          %button.primary Download as .PNG
+
+        .logo-download-grid--item
+          %h2 JPEG
+          %strong Joint Photographic Experts Group
+          %p A standard for compressed images usually used for photographs, that does not support transparency.
+          %button.primary Download as .JPEG
+
+.navigation-bar--rounded-shadow
+  .navigation-bar--rounded-shadow--shadow(js-rounded-shadow)
+
+.navigation-bar--drawer-toggle(js-toggle-drawer)
+  .navigation-bar--drawer-toggle-line
+  .navigation-bar--drawer-toggle-line
+  .navigation-bar--drawer-toggle-line

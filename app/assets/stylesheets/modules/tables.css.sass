@@ -8,11 +8,20 @@
     border-spacing: 0
     margin-top: 1em
     width: 100%
-    
+  
+  // Specify body so that thead is not selected  
   tbody > tr:nth-child(2n + 1)
     background-color: $light-gray
 
+    &[m-with-actions] > tr:hover
+      
+      > .data-group-actions
+        max-width: 100px
+        width: 100px
+        position: absolute
+
     td
+      pointer-events: none
       border-right: 1px solid $light-gray-2
 
       &:last-child
@@ -27,10 +36,6 @@
     min-width: 100px
     position: relative
 
-    &:hover
-      .data-group--edit
-        opacity: 1
-
   &--inner-cell
     max-width: 180px
     word-wrap: break-word
@@ -38,25 +43,6 @@
     padding: 1em
 
     > [s-hidden]
-      display: none
-
-  &--edit
-    +transition
-    position: absolute
-    top: 0
-    bottom: 0
-    right: 1em
-    margin: auto
-    font-size: 0.8em
-    height: 1.3em
-    opacity: 0
-    color: #a1a1a1
-
-    &:hover
-      color: $green
-      cursor: pointer
-
-    &[s-hidden]
       display: none
 
   input
@@ -69,3 +55,37 @@
     &[s-visible]
       opacity: 1
       display: block
+
+.data-group-actions
+  display: inline-block
+  +transition
+  max-width: 0
+  overflow: hidden
+  min-width: 0
+
+.data-group-action--content
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  display: block
+  // Needs to qualify higher than the tr nth-child selector
+  border-right: 0 !important
+
+  > a
+    text-decoration: none
+    display: inline-block
+    height: 100%
+    width: 100%
+
+.data-group-action--content-item
+  display: inline-block
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  height: 1em
+  margin: auto
+  text-align: center

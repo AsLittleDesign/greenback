@@ -1,0 +1,9 @@
+.container.navigation-bar--container
+  %a(href="/" js-logo)
+    %img.navigation-bar--logo(src="<%= image_url 'greenback.svg' %>" s-screen-full)
+    %img.navigation-bar--logo(src="<%= image_url 'greenback-mark-dark.svg' %>")
+
+  %a.navigation-bar--button(href="/signup")
+    %button.primary Sign Up
+  %a.navigation-bar--button(href="/login")
+    %button.secondary Log In

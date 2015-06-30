@@ -1,0 +1,28 @@
+%a(href="/" js-logo)
+  %img.navigation-bar--logo(src="<%= image_url "greenback.svg" %>" s-screen-full)
+  %img.navigation-bar--logo(src="<%= image_url "greenback-mark-dark.svg" %>")
+  
+.navigation-bar--links
+  %a(href="/dashboard")
+    %li.navigation-bar--user-links
+      %span Dashboard
+
+  %a(href="/budgets")
+    %li.navigation-bar--user-links(nav-budgets)
+      %span Budgets
+
+  %a(href="/bills")
+    %li.navigation-bar--user-links
+      %span Bills
+
+  %a(href="/debts")
+    %li.navigation-bar--user-links
+      %span Debts
+
+.navigation-bar--dropdown-toggle(js-toggle-navigation-dropdown)
+  Welcome,
+  = @user.first_name
+
+  .navigation-bar--dropdown(js-navigation-dropdown)
+    %a(href="/logout")
+      %li.navigation-bar--dropdown-link Logout

@@ -34,7 +34,6 @@ $navigation-height: 50px
       border-radius: 100%
 
   &--container
-    position: relative
     height: 100%
 
   &--logo
@@ -99,8 +98,9 @@ $navigation-height: 50px
   
   &--links
     position: relative
-    display: inline-block
     padding-left: 1em
+    float: left
+    height: $navigation-height
 
   &--user-links
     @extend %bold-title
@@ -109,7 +109,7 @@ $navigation-height: 50px
     color: black
     text-align: center
     display: inline-block
-    height: 50px
+    height: 100%
     width: 120px
     color: $light-shale
     position: relative

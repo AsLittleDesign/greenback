@@ -1,3 +1,4 @@
+# Attribute setting function
 $.fn.toggleAttr = (attribute, state) ->
   # 'elementState' should be true if element doesn't have 'attribute'
   elementState = this.attr attribute

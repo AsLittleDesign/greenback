@@ -15,19 +15,19 @@
     -if logged_in?
       .navigation-bar--links
         =link_to dashboard_path do
-          %li.navigation-bar--user-links(data-hover="Dashboard")
+          %li.navigation-bar--user-links
             %span Dashboard
 
         =link_to budgets_path do
-          %li.navigation-bar--user-links(data-hover="Budgets")
+          %li.navigation-bar--user-links(nav-budgets)
             %span Budgets
 
         =link_to bills_path do
-          %li.navigation-bar--user-links(data-hover="Bills")
+          %li.navigation-bar--user-links
             %span Bills
 
         =link_to debts_path do
-          %li.navigation-bar--user-links(data-hover="Debts")
+          %li.navigation-bar--user-links
             %span Debts
 
       .navigation-bar--dropdown-toggle(js-toggle-navigation-dropdown)

@@ -1,0 +1,26 @@
+%td
+  .data-group--inner-cell
+    = @budget.get("name")
+%td
+  .data-group--inner-cell
+    = @budget.get("budget_category")
+%td
+  .data-group--inner-cell
+    = @budget.get("duration")
+%td
+  .data-group--inner-cell
+    = @budget.get("cycle_start")
+%td
+  .data-group--inner-cell(js-parse-date)
+    = @budget.get("amount")
+%td
+  .data-group--inner-cell
+    = @budget.get("description")
+%td.data-group-actions
+  .data-group-action--content.blue
+    %a(href="/budgets/#{@budget.get('id')}")
+      .data-group-action--content-item(data-icon="pencil") &nbsp; Edit
+
+  .data-group-action--content.red
+    %a
+      .data-group-action--content-item Delete
