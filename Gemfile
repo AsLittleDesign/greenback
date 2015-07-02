@@ -82,6 +82,9 @@ group :development, :test do
   # Use Pry for debugging
   gem 'pry'
 
+  # Use Pry remote because Pry is broken with foreman
+  gem 'pry-remote'
+
   # Use FontCustom for compiling SVG assets into a custom icon font
   gem 'fontcustom'
 end

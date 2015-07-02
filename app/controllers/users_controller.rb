@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   respond_to :html, :json
 
   def index
-    respond_with current_user
+    if logged_in?
+      respond_with current_user
+    else
+      respond_with "fail"
+    end
   end
 
   def dashboard

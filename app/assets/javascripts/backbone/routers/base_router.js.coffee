@@ -8,7 +8,7 @@ class Greenback.Routers.Base extends Backbone.Router
     @user = new Greenback.Models.User()
     @user.fetch
       reset: true
-
+    
     view = new Greenback.Views.Base(model: @user)
     $("body").prepend view.render().$el
 

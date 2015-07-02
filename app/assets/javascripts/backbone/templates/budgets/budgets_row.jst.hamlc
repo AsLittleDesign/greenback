@@ -16,7 +16,7 @@
 %td
   .data-group--inner-cell
     = @budget.get("description")
-%td.data-group-actions
+.data-group-actions
   .data-group-action--content.blue
     %a(href="/budgets/#{@budget.get('id')}")
       .data-group-action--content-item(data-icon="pencil") &nbsp; Edit

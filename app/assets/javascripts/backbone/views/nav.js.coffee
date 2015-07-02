@@ -2,6 +2,7 @@ class Greenback.Views.Nav extends Greenback.Views.Base
   template: JST["backbone/templates/nav"]
   tagName: "nav"
   className: "navigation-bar"
+  id: ""
   attributes:
     "js-nav-bar": ""
 

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post 'budgets/:id' => 'budgets#update'
 
   scope "api" do
+    get "logged_in", to: "base#logged_in", defaults: { format: "json" }
     resources :budgets, defaults: { format: "json" }
     resources :users, defaults: { format: "json" }
   end
