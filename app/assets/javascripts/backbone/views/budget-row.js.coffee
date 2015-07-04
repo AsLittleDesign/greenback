@@ -5,7 +5,6 @@ class Greenback.Views.BudgetRow extends Greenback.Views.Base
   id: ""
   events:
     "mouseenter": "ghostRow"
-    "mouseleave": "destroyGhostRow"
 
   initialize: =>
     @model.on("reset", @render, this)
@@ -17,16 +16,19 @@ class Greenback.Views.BudgetRow extends Greenback.Views.Base
       else
         $("body").css "background-color"
     
-    isColored = false
     if color == @$el.css("background-color")
       isColored = true
+    else
+      isColored = false
 
     tdWidth = []
     @$el.find("td").each ->
       tdWidth.push $(this).width() + "px"
 
     @$ghost =
-      $("<table class='ghost-data'><tbody></tbody></table>")
+      $("<table class='ghost-data'>
+          <tbody></tbody>
+        </table>")
         .css
           "border-spacing": 0
           "top": @$el.offset().top
@@ -40,13 +42,14 @@ class Greenback.Views.BudgetRow extends Greenback.Views.Base
       ghostRow.attr "m-background", true
 
     ghostRow.find("td").each (index) ->
-      $(this).css
-        "width": tdWidth[index]
-    
-    console.log "boom"
+      $(this)
+        .css "width", tdWidth[index]
+        .find(".data-group--inner-cell").append "boom"
 
-  destroyGhostRow: =>
-    @$ghost.remove()
+    # ghostRow.find("tr").append "<td class='data-group-action--edit'></td><td class='data-group-action--delete'></td>"
+
+    @$ghost.on "mouseleave", ->
+      @remove()
 
   render: =>
     @$el.html @template({ budget: @model })

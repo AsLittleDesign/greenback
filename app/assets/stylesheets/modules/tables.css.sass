@@ -49,26 +49,6 @@
       opacity: 1
       display: block
 
-.data-group-actions
-  display: inline-block
-  +transition
-
-.data-group-action--content
-  position: absolute
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
-  display: block
-  // Needs to qualify higher than the tr nth-child selector
-  border-right: 0 !important
-
-  > a
-    text-decoration: none
-    display: inline-block
-    height: 100%
-    width: 100%
-
 .data-group-action--content-item
   display: inline-block
   position: absolute
@@ -92,3 +72,9 @@
 
       &:last-child
         border-right: 0
+
+.ghost-data--delete,
+.ghost-data--edit
+  border: 0 !important
+  border-collapse: collapse !important
+  border-spacing: 0 !important

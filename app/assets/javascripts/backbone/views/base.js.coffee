@@ -18,9 +18,6 @@ class Greenback.Views.Base extends Backbone.View
   isLoggedIn: =>
     @model.length
 
-  assign: (view, selector) =>
-      view.setElement(@$(selector)).render()
-
   showModal: (modal) =>
     if !modal.attr "s-visible"
       modalContent = $("[js-modal]").find ".modal--content"
