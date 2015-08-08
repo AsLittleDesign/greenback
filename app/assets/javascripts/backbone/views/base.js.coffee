@@ -5,9 +5,11 @@ class Greenback.Views.Base extends Backbone.View
     "click [js-show-modal]"  : "toggleModal"
     "click [js-hide-modal]"  : "hideModal"
     "keyup"                  : "escapeModal"
+    "submit [m-edit]"        : "editItem"
+    "submit [m-create]"      : "createItem"
   
   initialize: =>
-    @$el.keyup(@handleKeyup);
+    @$el.keyup(@handleKeyup)
   
   user: =>
     if @model.toJSON().id
@@ -15,8 +17,33 @@ class Greenback.Views.Base extends Backbone.View
     else
       false
 
-  isLoggedIn: =>
-    @model.length
+  createItem: (e) =>
+    e.preventDefault()
+    
+    options = {}
+    @$("input, textarea").each ->
+      if $(this).attr "name"
+        options[$(this).attr "name"] = $(this).val()
+    
+    options["owner_id"] = @user().id
+    budget = new Greenback.Models.Budget()
+    budget.set options
+    budget.save()
+
+    @hideModal()
+
+  editItem: (e) =>
+    e.preventDefault()
+    
+    options = {}
+    @$("input, textarea").each ->
+      if $(this).attr "name"
+        options[$(this).attr "name"] = $(this).val()
+    
+    @model.set options
+    @model.save()
+
+    @hideModal()
 
   showModal: (modal) =>
     if !modal.attr "s-visible"
@@ -27,10 +54,10 @@ class Greenback.Views.Base extends Backbone.View
       
       # Initialize input helpers
       modal.find("input, textarea").each ->
-        $(this).focus ->
+        @focus ->
           showHelperTooltip this
           
-        $(this).blur ->
+        @blur ->
           hideHelperTooltip this
 
         note = $(this).attr "title"
@@ -51,6 +78,17 @@ class Greenback.Views.Base extends Backbone.View
       setTimeout =>
         modalContent.toggleAttr "s-visible", true
       , 200
+
+    showHelperTooltip = (input) ->
+      helper = $(input).next()
+      if helper.attr "s-visible", false
+        $(".input-helper").removeAttr "s-visible"
+        helper.toggleAttr "s-visible", true
+
+    hideHelperTooltip = (input) ->
+      helper = $(@).next()
+      if helper.attr "s-visible", true
+        helper.next().toggleAttr "s-visible", false
 
   hideModal: =>
     modalContent = @$("[js-modal]").find(".modal--content")

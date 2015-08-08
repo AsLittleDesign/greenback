@@ -1,15 +1,19 @@
 {
   "checksum": {
-    "previous": "ec227f1f62ba1b228df6bd7f1fd4f27d5c08067ce5b948e441ab6a81b8e6caed",
-    "current": "ec227f1f62ba1b228df6bd7f1fd4f27d5c08067ce5b948e441ab6a81b8e6caed"
+    "previous": "660d10f5dcc8849380757251ca1d5568c7e2b7e7bddad5ad950ca2ba73b38159",
+    "current": "660d10f5dcc8849380757251ca1d5568c7e2b7e7bddad5ad950ca2ba73b38159"
   },
   "fonts": [
-    "app/assets/fonts/icons_ec227f1f62ba1b228df6bd7f1fd4f27d.ttf",
-    "app/assets/fonts/icons_ec227f1f62ba1b228df6bd7f1fd4f27d.svg",
-    "app/assets/fonts/icons_ec227f1f62ba1b228df6bd7f1fd4f27d.woff",
-    "app/assets/fonts/icons_ec227f1f62ba1b228df6bd7f1fd4f27d.eot"
+    "app/assets/fonts/icons_660d10f5dcc8849380757251ca1d5568.ttf",
+    "app/assets/fonts/icons_660d10f5dcc8849380757251ca1d5568.svg",
+    "app/assets/fonts/icons_660d10f5dcc8849380757251ca1d5568.woff",
+    "app/assets/fonts/icons_660d10f5dcc8849380757251ca1d5568.eot"
   ],
   "glyphs": {
+    "options": {
+      "codepoint": 61698,
+      "source": "app/assets/fonts/icons/options.svg"
+    },
     "pencil": {
       "codepoint": 61697,
       "source": "app/assets/fonts/icons/pencil.svg"

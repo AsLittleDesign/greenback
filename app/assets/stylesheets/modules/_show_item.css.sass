@@ -1,0 +1,42 @@
+.show-item
+  background-color: $light-gray
+  border-radius: 3px
+  padding: 2em 1em
+  margin-top: 1em
+  position: relative
+  overflow: hidden
+
+  &:hover
+    > .show-item--edit
+      opacity: 1
+
+  &--type
+    @extend %bold-title
+
+    position: absolute
+    top: 0
+    right: 0
+    background: $green
+    color: white
+    padding: 0.5em 1em
+  
+  &--title
+    @extend %bold-title
+
+    position: absolute
+    top: 0
+    left: 0
+    padding: 0.5em 1em
+  
+  &--edit
+    position: absolute
+    bottom: 0
+    right: 0
+    padding: 0.5em 1em
+    color: #bebebe
+    cursor: pointer
+    opacity: 0
+    +transition
+
+    &:hover
+      color: $green

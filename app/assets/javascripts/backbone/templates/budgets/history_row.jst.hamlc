@@ -1,0 +1,18 @@
+%td
+  .data-group--inner-cell
+    =@budget.get("name")
+%td
+  .data-group--inner-cell
+    =@budget.get("budget_category")
+%td
+  .data-group--inner-cell
+    =@budget.get("amount")
+%td
+  .data-group--inner-cell
+    =@budget.get("updated_at")
+%td
+  .data-group--inner-cell(js-parse-date)
+    =@budget.get("cycle_start")
+%td
+  .data-group--inner-cell
+    =@budget.get("description")

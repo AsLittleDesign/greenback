@@ -1,10 +1,10 @@
 # Attribute setting function
 $.fn.toggleAttr = (attribute, state) ->
   # 'elementState' should be true if element doesn't have 'attribute'
-  elementState = this.attr attribute
+  elementState = @attr attribute
 
-  if (elementState == "false" or elementState == undefined) or state == "true"
-    this.attr attribute, true
+  if (elementState is "false" or elementState is undefined) or state is "true"
+    @attr attribute, true
 
-  else if elementState != undefined || state == "false"
-    this.removeAttr attribute
+  else if elementState or state is "false"
+    @removeAttr attribute

@@ -18,17 +18,6 @@ $ ->
   $("[js-close-drawer]").click ->
     $("[js-drawer]").toggleAttr "s-active"
     $("[js-overlay-drawer]").toggleAttr "s-visible"
-  
-  showHelperTooltip = (input) ->
-    helper = $(input).next()
-    if helper.attr "s-visible", false
-      $(".input-helper").removeAttr "s-visible"
-      helper.toggleAttr "s-visible", true
-
-  hideHelperTooltip = (input) ->
-    helper = $(@).next()
-    if helper.attr "s-visible", true
-      helper.next().toggleAttr "s-visible", false
 
   # Inputs
   $("form").submit ->

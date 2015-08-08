@@ -1,10 +1,10 @@
 @font-face {
   font-family: "icons";
-  src: url("icons_ec227f1f62ba1b228df6bd7f1fd4f27d.eot");
-  src: url("icons_ec227f1f62ba1b228df6bd7f1fd4f27d.eot?#iefix") format("embedded-opentype"),
-       url("icons_ec227f1f62ba1b228df6bd7f1fd4f27d.woff") format("woff"),
-       url("icons_ec227f1f62ba1b228df6bd7f1fd4f27d.ttf") format("truetype"),
-       url("icons_ec227f1f62ba1b228df6bd7f1fd4f27d.svg#icons") format("svg");
+  src: url("icons_660d10f5dcc8849380757251ca1d5568.eot");
+  src: url("icons_660d10f5dcc8849380757251ca1d5568.eot?#iefix") format("embedded-opentype"),
+       url("icons_660d10f5dcc8849380757251ca1d5568.woff") format("woff"),
+       url("icons_660d10f5dcc8849380757251ca1d5568.ttf") format("truetype"),
+       url("icons_660d10f5dcc8849380757251ca1d5568.svg#icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -12,7 +12,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: "icons";
-    src: url("icons_ec227f1f62ba1b228df6bd7f1fd4f27d.svg#icons") format("svg");
+    src: url("icons_660d10f5dcc8849380757251ca1d5568.svg#icons") format("svg");
   }
 }
 
@@ -31,5 +31,6 @@
   font-smoothing: antialiased;
 }
 
+[data-icon="options"]:before { content: "\f102"; }
 [data-icon="pencil"]:before { content: "\f101"; }
 [data-icon="social-twitter"]:before { content: "\f100"; }

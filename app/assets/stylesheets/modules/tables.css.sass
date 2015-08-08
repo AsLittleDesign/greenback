@@ -13,6 +13,7 @@
   tbody
     > .data-group--table-row:nth-child(2n + 1)
       background-color: $light-gray
+      position: relative
 
       td
         border-right: 1px solid $light-gray-2
@@ -49,6 +50,46 @@
       opacity: 1
       display: block
 
+  &--options-button
+    top: 0
+    bottom: 0
+    margin: auto
+    right: -2em
+    position: absolute
+    vertical-align: middle
+    display: table
+    cursor: pointer
+
+    &:before
+      +transition
+      color: #a1a1a1
+
+    &:hover:before
+      color: $green
+
+    &:after
+      +transition(0.3s)
+      content: ""
+      pointer-events: none
+      position: absolute
+      height: 1em
+      width: 1em
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+      border:
+        width: 0
+        style: solid
+        color: $green
+      box-sizing: border-box
+      border-radius: 100%
+
+    &[s-active]:after
+      border-width: 0.5em
+
+
 .data-group-action--content-item
   display: inline-block
   position: absolute
@@ -61,20 +102,57 @@
   text-align: center
 
 .ghost-data
+  $action-group-width: 200px
+
   position: absolute
   top: 0
   left: 0
-  z-index: 1000
+  overflow: hidden
 
-  &[m-background]
-    td
-      border-right: 1px solid $light-gray-2
+  &--table
+    border-spacing: 0
+    +transition(all 0.25s ease-in-out)
 
-      &:last-child
-        border-right: 0
+    &[m-background]
+      td
+        border-right: 1px solid $light-gray-2
 
-.ghost-data--delete,
-.ghost-data--edit
-  border: 0 !important
-  border-collapse: collapse !important
-  border-spacing: 0 !important
+        &:last-child
+          border-right: 0
+
+    &[s-slide-in]
+      transform: translateX(-#{$action-group-width})
+
+  &--actions
+    position: absolute
+    top: 0
+    bottom: 0
+    right: -#{$action-group-width}
+    width: $action-group-width
+    +transition(all 0.25s ease-in-out)
+
+    &[s-slide-in]
+      transform: translateX(-#{$action-group-width})
+
+  &--action
+    width: 50%
+    height: 100%
+    float: left
+    color: white
+    position: relative
+
+    &[m-edit]
+      background-color: #2980b9
+
+    &[m-delete]
+      background-color: #c0392b
+
+    &-content
+      height: 1em
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+      text-align: center

@@ -35,3 +35,4 @@ class Greenback.Views.Budgets extends Greenback.Views.Base
       @budgetRows.add(budgetRow)
  
     this
+

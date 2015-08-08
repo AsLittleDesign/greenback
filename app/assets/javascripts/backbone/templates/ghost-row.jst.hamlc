@@ -1,0 +1,11 @@
+%table.ghost-data--table(js-toggle-slide)
+  %tbody
+
+.ghost-data--actions(js-toggle-slide)
+  %a(href="/budgets/#{@model.id}")
+    .ghost-data--action(m-edit)
+      .ghost-data--action-content
+        %span(data-icon="pencil")
+        Edit
+  .ghost-data--action(m-delete)
+    .ghost-data--action-content Delete

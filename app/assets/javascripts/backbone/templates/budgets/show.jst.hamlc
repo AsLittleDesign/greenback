@@ -1,0 +1,66 @@
+.show-item
+  .show-item--type
+    Budget -
+    = @model.get('budget_category')
+
+  .show-item--title= @model.get('name')
+  
+  %h2= @model.get('description')
+  %p= @model.get('amount')
+  %p= @model.get('cycle_duration')
+
+  .show-item--edit(rel="budget" js-edit-budget)
+    %span(data-icon="pencil")
+    Edit
+
+%h2 History
+.data-group
+  %table.data-group--table
+    %thead
+      %tr
+        %th
+          Name
+        %th
+          Category
+        %th
+          Amount
+        %th
+          Reoccurs
+        %th
+          Changed
+        %th
+          Description
+    %tbody(js-history-rows)
+
+#budget.modal(js-modal)
+  .modal--container
+    .modal--overlay(js-hide-modal)
+    .modal--content
+      .modal--close(js-hide-modal) x
+      %h1 Edit '#{@model.get('name')}'
+      %form(m-edit)
+        .modal--input-group
+          %label Name
+          %input(type="text" name="name" value="#{@model.get "name" }" js-autofocus)
+
+        .modal--input-group
+          %label Category
+          %input(type="text" name="budget_category" value="#{@model.get "budget_category" }")
+
+        .modal--input-group
+          %label Duration
+          %input(type="text" name="duration" value="#{@model.get "duration" }")
+
+        .modal--input-group
+          %label Start date
+          %input(type="date" name="cycle_start" value="#{@model.get "cycle_start" }")
+
+        .modal--input-group
+          %label Amount
+          %input(type="text" name="amount" value="#{@model.get "amount" }")
+
+        .modal--input-group
+          %label Description
+          %textarea(name="description")= @model.get "description"
+
+        %input.primary(type="submit" value="Done editing!")
